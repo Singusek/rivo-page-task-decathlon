@@ -1,4 +1,5 @@
 const numberOfItemsLoadedOnFirstPage = 3;
+let numberOfItemsLoaded = numberOfItemsLoadedOnFirstPage;
 
 document.addEventListener("DOMContentLoaded", function () {
     const productContainer = document.getElementById("product-container");
@@ -13,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function () {
         
         const products = await response.json();
   
-        products.slice(0,numberOfItemsLoadedOnFirstPage).forEach(product => {
+        products.slice(0, numberOfItemsLoaded).forEach(product => {
           const card = createProductCard(product);
           productContainer.appendChild(card);
         });
@@ -45,6 +46,13 @@ document.addEventListener("DOMContentLoaded", function () {
       `;
       return card;
     }
-  
+    
+    seeAllButton.addEventListener("click", function () {
+      numberOfItemsLoaded += 6;
+      fetchProducts();
+
+      seeAllButton.style.display = "none";
+    });
+
     fetchProducts();
   });
