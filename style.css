@@ -26,5 +26,33 @@ body {
 }
 
 #intro {
-    padding-top: 40px;
+    padding-top: 80px;
+}
+
+#img-group{
+   padding-left: 50px;
+}
+
+#intro h1 {
+    font-weight: 700;
+    font-size: 86px;
+    color:  #224F34;
+    font-family: 'Rufina', serif;
+}
+
+#intro p {
+    font-weight: 500;
+    font-size: 24px;
+    color:  #267D49;
+    font-family: 'Poppins', sans-serif;
+    line-height: 2.5 !important;
+    margin-right: 70px;
+    padding: 20px 0px;
+}
+
+#intro .btn {
+    background-color: #224F34;
+    padding: 15px 55px;
+    border-radius: 0;
+    box-shadow:  10px 5px 20px rgba(0, 0, 0, 0.4);
 }
