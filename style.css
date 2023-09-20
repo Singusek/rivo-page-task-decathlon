@@ -27,6 +27,7 @@ body {
 
 #intro {
     padding-top: 80px;
+    padding-bottom: 100px;
 }
 
 #img-group{
@@ -55,4 +56,13 @@ body {
     padding: 15px 55px;
     border-radius: 0;
     box-shadow:  10px 5px 20px rgba(0, 0, 0, 0.4);
+}
+
+#shop {
+    padding-top: 50px;
+    background-color: white;
+}
+
+.bi-star-fill {
+    color: #F5D426;
 }
