@@ -5,7 +5,7 @@ document.addEventListener("DOMContentLoaded", function () {
     const productContainer = document.getElementById("product-container");
     const seeAllButton = document.querySelector(".btn-shop");
 
-  
+    // 1 fecth all products z limitem 
     async function fetchProducts() {
       try {
         const response = await fetch(
@@ -13,7 +13,8 @@ document.addEventListener("DOMContentLoaded", function () {
         );
         
         const products = await response.json();
-  
+          // wyrzucic slice , przypiac funckje do bootona
+          // plik z kropką ktory  nie bedzie udostepniamny  
         products.slice(0, numberOfItemsLoaded).forEach(product => {
           const card = createProductCard(product);
           productContainer.appendChild(card);
