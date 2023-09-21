@@ -1,28 +1,42 @@
-const numberOfItemsLoadedOnFirstPage = 3;
-let numberOfItemsLoaded = numberOfItemsLoadedOnFirstPage;
-
 document.addEventListener("DOMContentLoaded", function () {
     const productContainer = document.getElementById("product-container");
     const seeAllButton = document.querySelector(".btn-shop");
+    const numberOfItemsLoadedOnFirstPage = 3;
+    let numberOfItemsLoaded = numberOfItemsLoadedOnFirstPage;
+    let productsArray = [];
 
-    // 1 fecth all products z limitem 
-    async function fetchProducts() {
+    async function loadAllProducts() {
       try {
         const response = await fetch(
           "https://fakestoreapi.com/products/category/women's clothing"
         );
         
-        const products = await response.json();
-          // wyrzucic slice , przypiac funckje do bootona
-          // plik z kropką ktory  nie bedzie udostepniamny  
-        products.slice(0, numberOfItemsLoaded).forEach(product => {
-          const card = createProductCard(product);
-          productContainer.appendChild(card);
-        });
+          productsArray = await response.json();
+          setBestSellingProducts();
 
       } catch (error) {
         console.error("Błąd podczas pobierania danych z API", error);
       }
+    }
+
+    function setBestSellingProducts() {
+        productsArray.sort((a, b) => {
+        if (a.rating.rate > b.rating.rate) return -1;
+        if (a.rating.rate < b.rating.rate) return 1;
+    
+        if (a.rating.count > b.rating.count) return -1;
+        if (a.rating.count < b.rating.count) return 1;
+    
+        return 0; 
+      });
+
+      productContainer.innerHTML = '';
+
+      productsArray.slice(0, numberOfItemsLoaded).forEach(product => {
+        const card = createProductCard(product);
+        productContainer.appendChild(card);
+      });
+
     }
   
     function createProductCard(product) {
@@ -49,11 +63,11 @@ document.addEventListener("DOMContentLoaded", function () {
     }
     
     seeAllButton.addEventListener("click", function () {
-      numberOfItemsLoaded += 6;
-      fetchProducts();
-
+      numberOfItemsLoaded = 9;
+      loadAllProducts();
       seeAllButton.style.display = "none";
     });
 
-    fetchProducts();
+    loadAllProducts();
+    setBestSellingProducts();
   });
