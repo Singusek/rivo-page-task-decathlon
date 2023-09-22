@@ -20,9 +20,6 @@ function setBestSellingProducts(products) {
     if (a.rating.rate > b.rating.rate) return -1;
     if (a.rating.rate < b.rating.rate) return 1;
     
-    if (a.rating.count > b.rating.count) return -1;
-    if (a.rating.count < b.rating.count) return 1;
-
     return 0;
   });
 
