@@ -6,7 +6,7 @@
 }
 
 .nav-item {
-    margin: 35px 10px;
+    margin: 25px 10px;
 }
 
 .nav-item  a{
@@ -25,7 +25,7 @@
 }
 
 #intro {
-    padding-top: 80px;
+    padding-top: 40px;
     padding-bottom: 80px;
     background-color: #C2EFD4 !important;
 }
@@ -112,6 +112,7 @@
     font-family: 'Poppins', sans-serif;
     font-weight: 500;
 }
+
 #login-collapse {
     display: none;
 }
@@ -120,23 +121,35 @@
     #img-group {
         display: none;
     }
+
     .nav-item {
         margin:  0px;
     }
+
     .navbar-toggler {
         margin-left: 200px;
     }
+
     .bag-div {
         display: none;
     }
+
     #login {
         display: none;
     }
+
     .img-icon {
         padding-top: 8px;
         padding-right: 35px;
         display: none;
     }
+
+    #intro {
+        padding-top: 40px;
+        padding-bottom: 80px;
+        background-color: #C2EFD4 !important;
+    }
+
     #intro h1 {
         font-weight: 700;
         font-size: 74px;
@@ -188,5 +201,8 @@
     #login-collapse {
         display: grid;
     }
-    
+
+    .nav-link {
+        text-align: center;
+    }
 }

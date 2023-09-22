@@ -1,11 +1,13 @@
 const productContainer = document.getElementById("product-container");
 const seeAllButton = document.querySelector(".btn-shop");
 const numberOfItemsLoadedOnFirstPage = 3;
+const URL = "https://fakestoreapi.com/products/category/women's clothing";
 let numberOfItemsLoaded = numberOfItemsLoadedOnFirstPage;
+
 
 async function loadProducts() {
   try {
-    const response = await fetch("https://fakestoreapi.com/products/category/women's clothing");
+    const response = await fetch(URL);
     return await response.json();
   } catch (error) {
     console.error("Błąd podczas pobierania danych z API", error);
@@ -17,14 +19,12 @@ function setBestSellingProducts(products) {
   products.sort((a, b) => {
     if (a.rating.rate > b.rating.rate) return -1;
     if (a.rating.rate < b.rating.rate) return 1;
-
+    
     if (a.rating.count > b.rating.count) return -1;
     if (a.rating.count < b.rating.count) return 1;
 
     return 0;
   });
-
-  productContainer.innerHTML = '';
 
   products.slice(0, numberOfItemsLoaded).forEach(product => {
     const card = createProductCard(product);
@@ -57,6 +57,13 @@ function createProductCard(product) {
 
 function initializePage() {
   loadProducts().then(setBestSellingProducts);
+
+  /* When loading another 6 products by clicking on the "se all" button,
+  the first 3 products are duplicated. This can be avoided by clearing productContainer:
+  "productContainer.innerHTML = ''. I didn't use this solution because in the task
+  you need to load 6 more products, and the database has only 3 other than the ones displayed.
+  Information found in the API documentation: 
+  https://github.com/keikaavousi/fake-store-api/blob/master/controller/product.js*/
 
   seeAllButton.addEventListener("click", function () {
     numberOfItemsLoaded = 9;
