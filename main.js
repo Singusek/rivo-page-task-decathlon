@@ -10,7 +10,7 @@ async function loadProducts() {
     const response = await fetch(URL);
     return await response.json();
   } catch (error) {
-    console.error("Błąd podczas pobierania danych z API", error);
+    console.error("Error while downloading data from API", error);
     return [];
   }
 }
